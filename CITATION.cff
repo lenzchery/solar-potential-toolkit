@@ -1,4 +1,4 @@
-cff-version: 1.2.0
+﻿cff-version: 1.2.0
 
 message: "If you use this repository, please cite it using the metadata below."
 
@@ -7,7 +7,7 @@ title: "Solar Potential Toolkit: A Reproducible Multi-Country Geospatial Pipelin
 type: software
 
 authors:
-  - family-names: "Chéry"
+  - family-names: "ChÃ©ry"
     given-names: "Lenz Arly"
 
 repository-code: "https://github.com/lenzchery/solar-potential-toolkit"
@@ -17,6 +17,8 @@ url: "https://github.com/lenzchery/solar-potential-toolkit"
 license: "MIT"
 
 version: "1.0.0"
+
+doi: "10.5281/zenodo.22092960"
 
 date-released: "2026-08-25"
 
@@ -50,9 +52,10 @@ abstract: >
 preferred-citation:
   type: software
   authors:
-    - family-names: "Chéry"
+    - family-names: "ChÃ©ry"
       given-names: "Lenz Arly"
   title: "Solar Potential Toolkit: A Reproducible Multi-Country Geospatial Pipeline for Solar Resource Assessment"
   year: 2026
   version: "1.0.0"
+  doi: "10.5281/zenodo.22092960"
   url: "https://github.com/lenzchery/solar-potential-toolkit"

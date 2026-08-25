@@ -1,5 +1,6 @@
 # ☀️ Solar Potential Toolkit
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.22092959.svg)](https://doi.org/10.5281/zenodo.22092959)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 ![Python](https://img.shields.io/badge/Python-3.11-blue.svg)
 ![Miniconda](https://img.shields.io/badge/Environment-Miniconda-44A833.svg?logo=anaconda)
@@ -453,7 +454,7 @@ This investigation was made possible by the pipeline's own QA/QC discipline: the
 
 ## 📖 Citation
 
-See [`CITATION.cff`](CITATION.cff).
+See [`CITATION.cff`](CITATION.cff) to cite this exact version (v1.0.0, DOI [10.5281/zenodo.22092960](https://doi.org/10.5281/zenodo.22092960)). The badge above always resolves to the latest release.
 
 ## 📄 License
 
