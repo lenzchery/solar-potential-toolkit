@@ -1,0 +1,44 @@
+# requirements.txt - solar-potential-toolkit
+# Pinned to the "geo311" conda environment (Python 3.11.15).
+# Only lists packages actually imported in the pipeline code (00-04,
+# config_loader.py, utils/qc.py, utils/reporting.py, utils/mapping.py)
+# plus pyogrio, which is not imported directly but is required at
+# runtime by geopandas (engine="pyogrio" is used explicitly throughout
+# this project instead of the default fiona engine).
+
+# --- Geospatial core ---
+geopandas==0.14.4
+rasterio==1.4.4
+rioxarray==0.18.2
+pyogrio==0.11.1
+shapely==2.1.2
+pyproj==3.7.2
+
+# --- Scientific computing / data ---
+numpy==1.26.0
+pandas==2.1.1
+scipy==1.11.3
+
+# --- Visualization ---
+matplotlib==3.8.0
+matplotlib-scalebar==0.9.0
+
+# --- Database / spatial database ---
+SQLAlchemy==2.0.41
+psycopg2==2.9.10
+python-dotenv==1.2.2
+
+# --- Notes ---
+# - fiona is intentionally NOT listed: this project uses
+#   engine="pyogrio" explicitly on every gpd.read_file()/to_file() call,
+#   never fiona's default engine.
+# - xarray is not listed as a direct dependency: it is used internally
+#   by rioxarray, but never imported directly in this project's code.
+# - GDAL (conda-forge gdal 3.11.5 / libgdal-core 3.11.5) is not listed
+#   here: it's a system-level dependency of rasterio, not something
+#   imported directly in the code. On Windows, `pip install gdal` often
+#   fails (it needs GDAL binaries already present on the system) -
+#   conda-forge remains the recommended install path:
+#   `conda install -c conda-forge gdal=3.11.5` before
+#   `pip install -r requirements.txt`.
+# - Requires Python 3.11.15 (the exact version this was tested against).

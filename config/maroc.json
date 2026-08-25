@@ -1,0 +1,73 @@
+{
+  "country": "Maroc",
+  "country_code": "MAR",
+  "crs_target": "EPSG:32629",
+  "crs_target_name": "WGS 84 / UTM zone 29N",
+  "raster_filename": "GHI_Maroc.tif",
+  "admin_vector_filename": "gadm41_MAR_2.shp",
+  "admin_name_field": "NAME_2",
+  "administrative_unit": {
+    "source": "GADM",
+    "level": "2",
+    "level_name": "GADM administrative level 2"
+  },
+  "_note": "Morocco spans UTM zones 28N to 30N; 29N is used here as a provisional single projection covering most of the populated west/central territory (Rabat, Casablanca, Marrakech). Verify against the eastern extent of the study area before finalizing.",
+  "ghi_threshold_kwh_m2_day": 5.0,
+  "plot": {
+    "tick_interval_m": 150000,
+    "figsize_in": [10, 10],
+    "vmin": 3.0,
+    "vmax": 6.3,
+    "labels": {
+      "enabled": true,
+      "max_labels": 10,
+      "min_distance_m": "auto",
+      "min_candidate_area_km2": 400,
+      "placement": "representative_point",
+      "style": {
+        "fontsize": 8,
+        "color": "navy",
+        "halo_color": "white",
+        "halo_width": 1.8,
+        "fontweight": "bold"
+      },
+      "markers": {
+        "show": "labeled_only",
+        "color": "blue",
+        "alpha": 0.6,
+        "size": 60,
+        "edgecolor": "white"
+      }
+    },
+    "annotations": {
+      "north_arrow": {
+        "xy": [0.08, 0.93],
+        "xytext": [0.08, 0.83]
+      },
+      "stats_box": {
+        "x": 0.55,
+        "y": 0.55,
+        "fontsize": 10,
+        "alpha": 0.85
+      }
+    }
+  },
+  "provenance": {
+    "raster": {
+      "provider": "Global Solar Atlas",
+      "dataset": "Global Horizontal Irradiation (GHI)",
+      "version": "3.0",
+      "period": "1999-2018",
+      "resolution": "~250 m",
+      "source_url": "https://globalsolaratlas.info/download/morocco",
+      "license": "CC BY 4.0"
+    },
+    "vector": {
+      "provider": "GADM",
+      "dataset": "Administrative Divisions (level 2)",
+      "version": "4.1",
+      "source_url": "https://gadm.org/download_country_v2.html",
+      "license": "Freely available for academic and non-commercial use only; redistribution or commercial use requires prior permission (GADM license terms)"
+    }
+  }
+}

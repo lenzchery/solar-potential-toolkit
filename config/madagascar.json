@@ -1,0 +1,73 @@
+{
+  "country": "Madagascar",
+  "country_code": "MDG",
+  "crs_target": "EPSG:32738",
+  "crs_target_name": "WGS 84 / UTM zone 38S",
+  "raster_filename": "GHI_Madagascar.tif",
+  "admin_vector_filename": "gadm41_MDG_2.shp",
+  "admin_name_field": "NAME_2",
+  "administrative_unit": {
+    "source": "GADM",
+    "level": "2",
+    "level_name": "GADM administrative level 2"
+  },
+  "_note": "Madagascar spans UTM zones 38S and 39S; 38S is used here as a reasonable single projection for national-scale mapping. MDG_adm2 represents the district level.",
+  "ghi_threshold_kwh_m2_day": 5.0,
+  "plot": {
+    "tick_interval_m": 150000,
+    "figsize_in": [10, 10],
+    "vmin": 2.9,
+    "vmax": 6.3,
+    "labels": {
+      "enabled": true,
+      "max_labels": 10,
+      "min_distance_m": "auto",
+      "min_candidate_area_km2": 400,
+      "placement": "representative_point",
+      "style": {
+        "fontsize": 8,
+        "color": "navy",
+        "halo_color": "white",
+        "halo_width": 1.8,
+        "fontweight": "bold"
+      },
+      "markers": {
+        "show": "labeled_only",
+        "color": "blue",
+        "alpha": 0.6,
+        "size": 60,
+        "edgecolor": "white"
+      }
+    },
+    "annotations": {
+      "north_arrow": {
+        "xy": [0.08, 0.93],
+        "xytext": [0.08, 0.83]
+      },
+      "stats_box": {
+        "x": 0.5,
+        "y": 0.5,
+        "fontsize": 10,
+        "alpha": 0.85
+      }
+    }
+  },
+  "provenance": {
+    "raster": {
+      "provider": "Global Solar Atlas",
+      "dataset": "Global Horizontal Irradiation (GHI)",
+      "version": "3.0",
+      "period": "1999-2018",
+      "resolution": "~250 m",
+      "source_url": "https://globalsolaratlas.info/download/madagascar",
+      "license": "CC BY 4.0"
+    },
+    "vector": {
+      "provider": "GADM",
+      "dataset": "Administrative Divisions (level 2)",
+      "version": "4.1",
+      "source_url": "https://gadm.org/download_country_v2.html",
+      "license": "Freely available for academic and non-commercial use only; redistribution or commercial use requires prior permission (GADM license terms)"
+    }
+  }
+}

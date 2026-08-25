@@ -1,0 +1,72 @@
+{
+  "country": "Haïti",
+  "country_code": "HTI",
+  "crs_target": "EPSG:32618",
+  "crs_target_name": "WGS 84 / UTM zone 18N",
+  "raster_filename": "GHI_Haiti.tif",
+  "admin_vector_filename": "hti_admin2_em.shp",
+  "admin_name_field": "adm2_name",
+  "administrative_unit": {
+    "source": "OCHA Haiti / CNIGS (via HDX)",
+    "level": "2",
+    "level_name": "Commune"
+  },
+  "ghi_threshold_kwh_m2_day": 5.0,
+  "plot": {
+    "tick_interval_m": 50000,
+    "figsize_in": [10, 8],
+    "vmin": 3.2,
+    "vmax": 6.2,
+    "labels": {
+      "enabled": true,
+      "strategy": "adaptive",
+      "max_labels": 10,
+      "min_distance_m": 30000,
+      "min_candidate_area_km2": 0,
+      "priority": "area",
+      "placement": "representative_point",
+      "style": {
+        "fontsize": 7,
+        "color": "navy",
+        "halo_color": "white",
+        "halo_width": 2.0,
+        "fontweight": "bold"
+      },
+      "markers": {
+        "show": "labeled_only",
+        "color": "blue",
+        "alpha": 0.6,
+        "size": 60,
+        "edgecolor": "white"
+      }
+    },
+    "annotations": {
+      "north_arrow": {
+        "xy": [0.10, 0.93],
+        "xytext": [0.10, 0.83]
+      },
+      "stats_box": {
+        "x": 0.34,
+        "y": 0.60
+      }
+    }
+  },
+  "provenance": {
+    "raster": {
+      "provider": "Global Solar Atlas",
+      "dataset": "Global Horizontal Irradiation (GHI)",
+      "version": "3.0",
+      "period": "1999-2018",
+      "resolution": "~250 m",
+      "source_url": "https://globalsolaratlas.info/download/haiti",
+      "license": "CC BY 4.0"
+    },
+    "vector": {
+      "provider": "OCHA Haiti (source data: CNIGS)",
+      "dataset": "Haiti - Subnational Administrative Boundaries (COD-AB), admin level 2 - Commune",
+      "version": "01 (spatial data from 2013; 2017 P-code redesign; reviewed 06 January 2025)",
+      "source_url": "https://data.humdata.org/dataset/cod-ab-hti",
+      "license": "CC BY-IGO (Creative Commons Attribution for Intergovernmental Organisations)"
+    }
+  }
+}

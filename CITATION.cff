@@ -1,0 +1,58 @@
+cff-version: 1.2.0
+
+message: "If you use this repository, please cite it using the metadata below."
+
+title: "Solar Potential Toolkit: A Reproducible Multi-Country Geospatial Pipeline for Solar Resource Assessment"
+
+type: software
+
+authors:
+  - family-names: "Chéry"
+    given-names: "Lenz Arly"
+
+repository-code: "https://github.com/lenzchery/solar-potential-toolkit"
+
+url: "https://github.com/lenzchery/solar-potential-toolkit"
+
+license: "MIT"
+
+version: "1.0.0"
+
+date-released: "2026-08-25"
+
+keywords:
+  - Geospatial Analysis
+  - Geographic Information Systems
+  - Solar Resource Assessment
+  - Global Horizontal Irradiance
+  - Global Solar Atlas
+  - Raster Analysis
+  - Zonal Statistics
+  - PostGIS
+  - Quality Assurance
+  - Reproducible Research
+  - Multi-country
+  - Python
+
+abstract: >
+  A configuration-driven Python pipeline for assessing solar resource
+  potential (Global Horizontal Irradiance) across multiple countries.
+  Includes a quality-assurance module (CRS/pixel plausibility, physical
+  plausibility, boundary/raster area consistency, administrative
+  topology, threshold plausibility), raster-based zonal statistics for
+  scalable per-admin-unit analysis, and automated per-country and
+  cross-country HTML/JSON reporting. Generalizes the single-country
+  methodology developed for reunion-solar-analysis
+  (https://github.com/lenzchery/reunion-solar-analysis) to six countries
+  spanning a wide range of raster sizes, administrative unit counts, and
+  coordinate reference systems.
+
+preferred-citation:
+  type: software
+  authors:
+    - family-names: "Chéry"
+      given-names: "Lenz Arly"
+  title: "Solar Potential Toolkit: A Reproducible Multi-Country Geospatial Pipeline for Solar Resource Assessment"
+  year: 2026
+  version: "1.0.0"
+  url: "https://github.com/lenzchery/solar-potential-toolkit"

@@ -1,0 +1,73 @@
+{
+  "country": "Kenya",
+  "country_code": "KEN",
+  "crs_target": "EPSG:32637",
+  "crs_target_name": "WGS 84 / UTM zone 37N",
+  "raster_filename": "GHI_Kenya.tif",
+  "admin_vector_filename": "gadm41_KEN_2.shp",
+  "admin_name_field": "NAME_2",
+  "administrative_unit": {
+    "source": "GADM",
+    "level": "2",
+    "level_name": "GADM administrative level 2"
+  },
+  "_note": "Kenya straddles the equator, so it spans both northern and southern UTM zones (36N/37N and 36S/37S). EPSG:32637 (37N) is used here as a provisional single projection; Nairobi and the southern highlands technically fall just south of the equator, so a plausibility check (see check_crs_pixel_plausibility in utils/qc.py) is especially relevant for this country before trusting area/distance calculations.",
+  "ghi_threshold_kwh_m2_day": 5.0,
+  "plot": {
+    "tick_interval_m": 150000,
+    "figsize_in": [10, 10],
+    "vmin": 3.4,
+    "vmax": 6.8,
+    "labels": {
+      "enabled": true,
+      "max_labels": 10,
+      "min_distance_m": "auto",
+      "min_candidate_area_km2": 400,
+      "placement": "representative_point",
+      "style": {
+        "fontsize": 8,
+        "color": "navy",
+        "halo_color": "white",
+        "halo_width": 1.8,
+        "fontweight": "bold"
+      },
+      "markers": {
+        "show": "labeled_only",
+        "color": "blue",
+        "alpha": 0.6,
+        "size": 60,
+        "edgecolor": "white"
+      }
+    },
+    "annotations": {
+      "north_arrow": {
+        "xy": [0.04, 0.95],
+        "xytext": [0.04, 0.85]
+      },
+      "stats_box": {
+        "x": 0.5,
+        "y": 0.5,
+        "fontsize": 10,
+        "alpha": 0.9
+      }
+    }
+  },
+  "provenance": {
+    "raster": {
+      "provider": "Global Solar Atlas",
+      "dataset": "Global Horizontal Irradiation (GHI)",
+      "version": "3.0",
+      "period": "1999-2018",
+      "resolution": "~250 m",
+      "source_url": "https://globalsolaratlas.info/download/kenya",
+      "license": "CC BY 4.0"
+    },
+    "vector": {
+      "provider": "GADM",
+      "dataset": "Administrative Divisions (level 2)",
+      "version": "4.1",
+      "source_url": "https://gadm.org/download_country_v2.html",
+      "license": "Freely available for academic and non-commercial use only; redistribution or commercial use requires prior permission (GADM license terms)"
+    }
+  }
+}

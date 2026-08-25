@@ -1,0 +1,67 @@
+{
+  "country": "Sénégal",
+  "country_code": "SEN",
+  "crs_target": "EPSG:32628",
+  "crs_target_name": "WGS 84 / UTM zone 28N",
+  "raster_filename": "GHI_Senegal.tif",
+  "admin_vector_filename": "gadm41_SEN_2.shp",
+  "admin_name_field": "NAME_2",
+  "administrative_unit": {
+    "source": "GADM",
+    "level": "2",
+    "level_name": "GADM administrative level 2"
+  },
+  "_note": "Senegal falls almost entirely within UTM zone 28N (a small eastern sliver touches 29N), so 28N is a low-risk single-zone choice for national-scale mapping. Territory GHI range is unusually narrow (5.34-5.91 kWh/m2/day) -- this is a genuine physical signal (near-homogeneous solar resource), not a scale artifact. Because the observed minimum (5.34) already exceeds the 5.0 kWh/m2/day threshold, the optimal-zone map correctly shows ~100% coverage -- this is expected given the territory's GHI distribution, not a computation error.",
+  "ghi_threshold_kwh_m2_day": 5.0,
+  "plot": {
+    "tick_interval_m": 100000,
+    "figsize_in": [10, 8],
+    "vmin": 5.3,
+    "vmax": 6.0,
+    "labels": {
+      "enabled": true,
+      "max_labels": 10,
+      "min_distance_m": "auto",
+      "min_candidate_area_km2": 0,
+      "placement": "representative_point",
+      "style": {
+        "fontsize": 8,
+        "color": "navy",
+        "halo_color": "white",
+        "halo_width": 2.0,
+        "fontweight": "bold"
+      },
+      "markers": {
+        "show": "labeled_only",
+        "color": "blue",
+        "alpha": 0.6,
+        "size": 60,
+        "edgecolor": "white"
+      }
+    },
+    "annotations": {
+      "stats_box": {
+        "x": 0.50,
+        "y": 0.55
+      }
+    }
+  },
+  "provenance": {
+    "raster": {
+      "provider": "Global Solar Atlas",
+      "dataset": "Global Horizontal Irradiation (GHI)",
+      "version": "3.0",
+      "period": "1999-2018",
+      "resolution": "~250 m",
+      "source_url": "https://globalsolaratlas.info/download/senegal",
+      "license": "CC BY 4.0"
+    },
+    "vector": {
+      "provider": "GADM",
+      "dataset": "Administrative Divisions (level 2)",
+      "version": "4.1",
+      "source_url": "https://gadm.org/download_country_v2.html",
+      "license": "Freely available for academic and non-commercial use only; redistribution or commercial use requires prior permission (GADM license terms)"
+    }
+  }
+}

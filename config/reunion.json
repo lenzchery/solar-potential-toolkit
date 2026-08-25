@@ -1,0 +1,60 @@
+{
+  "country": "La Réunion",
+  "country_code": "REU",
+  "crs_target": "EPSG:2975",
+  "crs_target_name": "RGR92 / UTM zone 40S",
+  "raster_filename": "GHI_Reunion.tif",
+  "admin_vector_filename": "REU_adm2.shp",
+  "admin_name_field": "NAME_2",
+  "administrative_unit": {
+    "source": "GADM",
+    "level": "2",
+    "level_name": "Commune"
+  },
+  "ghi_threshold_kwh_m2_day": 5.0,
+  "plot": {
+    "tick_interval_m": 10000,
+    "figsize_in": [10, 8],
+    "vmin": 1.3,
+    "vmax": 5.5,
+    "labels": {
+      "enabled": true,
+      "max_labels": 10,
+      "min_distance_m": "auto",
+      "min_candidate_area_km2": 0,
+      "placement": "representative_point",
+      "style": {
+        "fontsize": 7,
+        "color": "navy",
+        "halo_color": "white",
+        "halo_width": 2.0,
+        "fontweight": "bold"
+      },
+      "markers": {
+        "show": "labeled_only",
+        "color": "blue",
+        "alpha": 0.6,
+        "size": 60,
+        "edgecolor": "white"
+      }
+    }
+  },
+  "provenance": {
+    "raster": {
+      "provider": "Global Solar Atlas",
+      "dataset": "Global Horizontal Irradiation (GHI)",
+      "version": "3.0",
+      "period": "1999-2018",
+      "resolution": "~250 m",
+      "source_url": "https://globalsolaratlas.info/download/reunion",
+      "license": "CC BY 4.0"
+    },
+    "vector": {
+      "provider": "GADM",
+      "dataset": "Second-level Administrative Divisions (communes)",
+      "version": "2.8",
+      "source_url": "https://purl.stanford.edu/pn417fx4462",
+      "license": "Freely available for academic and non-commercial use only; redistribution or commercial use requires prior permission (GADM license terms)"
+    }
+  }
+}
