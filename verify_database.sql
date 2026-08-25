@@ -59,13 +59,17 @@ ORDER BY country_code;
 
 
 -- -----------------------------------------------------------------------------
--- 5. SRID consistency check (should return a single row: 4326)
+-- 5. SRID consistency check (should return a single row per table: 4326)
 --    Confirms every country's geometries share one canonical storage CRS,
---    per the README's "Storage CRS" note.
+--    per the README's "Storage CRS" note. geometry_table labels which
+--    table each row comes from, so both tables' uniformity is visible
+--    in one result set rather than two unlabeled, easy-to-confuse rows.
 -- -----------------------------------------------------------------------------
-SELECT DISTINCT ST_SRID(geometry) AS srid FROM solar.optimal_zones
+SELECT DISTINCT ST_SRID(geometry) AS srid, 'optimal_zones' AS geometry_table
+FROM solar.optimal_zones
 UNION
-SELECT DISTINCT ST_SRID(geometry) AS srid FROM solar.admin_centroids;
+SELECT DISTINCT ST_SRID(geometry) AS srid, 'admin_centroids' AS geometry_table
+FROM solar.admin_centroids;
 
 
 -- -----------------------------------------------------------------------------
@@ -85,9 +89,14 @@ ORDER BY country_code, artifact_type;
 
 
 -- -----------------------------------------------------------------------------
--- 8. Summary view - one query bringing GHI stats, zone coverage, and
---    geometry counts together per country. Created once, then reused for
---    any future check (and for the README screenshot - see query 9).
+-- 8. Summary view - one query bringing GHI stats, zone coverage, geometry
+--    counts, and the shared geometry storage SRID together per country.
+--    Created once, then reused for any future check (and for the README
+--    screenshot - see query 9). geometry_srid is added as the LAST
+--    column, not inserted earlier in the list: PostgreSQL's
+--    CREATE OR REPLACE VIEW can only append columns at the end - it
+--    refuses to reorder or insert into an existing column list, since
+--    view columns are matched by position, not name.
 -- -----------------------------------------------------------------------------
 CREATE OR REPLACE VIEW solar.country_summary AS
 SELECT
@@ -101,7 +110,10 @@ SELECT
         AS optimal_zone_polygons,
     (SELECT COUNT(*) FROM solar.admin_centroids c WHERE c.country_code = g.country_code)
         AS admin_units_covered,
-    r.qc_status
+    r.qc_status,
+    (SELECT ST_SRID(z.geometry) FROM solar.optimal_zones z
+      WHERE z.country_code = g.country_code LIMIT 1)
+        AS geometry_srid
 FROM solar.ghi_statistics g
 JOIN solar.optimal_zones_area a USING (country_code)
 JOIN solar.processing_runs r USING (country_code);

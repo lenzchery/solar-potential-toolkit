@@ -382,7 +382,7 @@ confirming that all six managed tables - not just one - were correctly synchroni
 
 <p align="center">
   <img src="figures/database_export_summary.png"
-       alt="PostgreSQL/PostGIS query result: per-country GHI mean, optimal-zone area and percentage, geometry counts, and QC status across all six countries"
+       alt="PostgreSQL/PostGIS query result: per-country GHI mean, optimal-zone area and percentage, geometry counts, QC status across all six countries, and geometry SRID"
        width="800">
 </p>
 
