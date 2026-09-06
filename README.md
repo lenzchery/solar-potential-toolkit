@@ -206,7 +206,7 @@ Full per-country provenance (exact dataset, version, source URL, license) is rec
 
 ## ⚙️ Methodology and scripts
 
-The default GHI threshold (`ghi_threshold_kwh_m2_day`, 5.0 kWh/m²/day in every currently configured country) is used as an operational criterion to identify areas with favorable solar-resource conditions for solar cooking. This value is consistent with values discussed in the solar-cooking literature, but is not treated as a strict physical limit for cooking feasibility. The threshold is configurable per country in `config/<country>.json` and is not hard-coded in any script.
+The default GHI threshold (`ghi_threshold_kwh_m2_day`, 5.0 kWh/m²/day in every currently configured country) is used as an operational criterion to identify areas with favorable solar-resource conditions for solar cooking. This value sits at the lower bound of the 5-7 kWh/m²/day solar resource range identified as favorable for solar cooking diffusion by Muthusivagami et al. (2010) - that source characterizes a typical resource range, not a prescribed operational threshold, so 5.0 kWh/m²/day here is not treated as a strict physical limit for cooking feasibility. The threshold is configurable per country in `config/<country>.json` and is not hard-coded in any script.
 
 | Script | Role |
 |---|---|
@@ -497,5 +497,5 @@ The interest in solar resource assessment behind this toolkit traces back to a M
 
 - Global Solar Atlas. (2024). *Global Solar Atlas 3.0.* The World Bank Group / Solargis.
 - Hijmans, R. J. *Global Administrative Areas (GADM).* https://gadm.org
-- Muthusivagami, R. M., Velraj, R., & Sethumadhavan, R. (2008). Solar cookers with and without thermal storage - A review. *Renewable and Sustainable Energy Reviews*, 14(2), 691-701.
+- Muthusivagami, R. M., Velraj, R., & Sethumadhavan, R. (2010). Solar cookers with and without thermal storage - A review. *Renewable and Sustainable Energy Reviews*, 14(2), 691-701.
 - OCHA Field Information Services Section. *Haiti - Subnational Administrative Boundaries.* Humanitarian Data Exchange. https://data.humdata.org/dataset/cod-ab-hti
