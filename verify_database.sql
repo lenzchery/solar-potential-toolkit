@@ -146,3 +146,28 @@ GROUP BY country_code HAVING COUNT(*) <> 1;
 
 SELECT country_code, COUNT(*) FROM solar.processing_runs
 GROUP BY country_code HAVING COUNT(*) <> 1;
+
+
+-- -----------------------------------------------------------------------------
+-- 11. Independent cross-validation of stored areas - recomputes surface
+--     area directly in SQL from the stored geometries alone (ST_Transform
+--     to each country's local projected CRS, then ST_Area), and compares
+--     against the area already stored via the Python pipeline. Confirms
+--     the exported geometries are numerically consistent with the
+--     pipeline's own reported statistics, not just visually plausible.
+--     Expect a near-zero difference (rounding only) for every country.
+-- -----------------------------------------------------------------------------
+SELECT
+    z.country_code,
+    r.crs_target,
+    ROUND((ST_Area(ST_Transform(ST_Union(z.geometry),
+        split_part(r.crs_target, ':', 2)::int)) / 1e6)::numeric, 2) AS surface_recalculee_km2,
+    a.area_km2 AS surface_pipeline_km2,
+    ROUND((a.area_km2 - (ST_Area(ST_Transform(ST_Union(z.geometry),
+        split_part(r.crs_target, ':', 2)::int)) / 1e6))::numeric, 4) AS ecart_km2
+FROM solar.optimal_zones z
+JOIN solar.processing_runs r ON r.country_code = z.country_code
+JOIN solar.optimal_zones_area a ON a.country_code = z.country_code
+WHERE z.optimal = 1
+GROUP BY z.country_code, r.crs_target, a.area_km2
+ORDER BY z.country_code;

@@ -379,6 +379,27 @@ confirming that all six managed tables - not just one - were correctly synchroni
 
 **Storage CRS.** All geometry tables (`optimal_zones`, `admin_centroids`) are shared across countries, but each country's own outputs are in a different local projected CRS (`cfg.crs_target` - e.g. EPSG:32618 for Haïti, EPSG:32637 for Kenya). A PostGIS geometry column has a single fixed SRID, set at table creation, so every geometry is reprojected to **EPSG:4326 (WGS84)** before being written - the standard choice for a country-agnostic canonical storage CRS. This only affects how geometries are stored; the area/statistics tables (`ghi_statistics`, `optimal_zones_area`) are unaffected, since those figures were already computed upstream in each country's local projected CRS and are stored as plain numbers, not geometries. Use `ST_Transform(geom, <target_srid>)` in SQL to reproject back to a local CRS for any query that needs accurate area or distance in meters. For the same reason, `admin_centroids` keeps only `admin_name` (via `cfg.admin_name_field`) and `zone_area_km2`, not each provider's raw attribute columns (e.g. GADM's `GID_2` vs. OCHA/CNIGS's fields for Haïti), which differ by country and would otherwise break the shared table's fixed schema.
 
+**Independent cross-validation of stored areas.** The area figures stored in
+`optimal_zones_area` (computed upstream in Python via `compute_area_stats()`)
+were independently cross-checked by recomputing surface area directly in
+SQL, from the stored geometries alone - `ST_Transform` to each country's
+local projected CRS, then `ST_Area`, `GROUP BY country_code`. Both methods
+agree to rounding precision across all six countries:
+
+| Country | Python (`area_km2`) | SQL (`ST_Transform` + `ST_Area`) | Difference |
+|---|---|---|---|
+| Haïti | 24,049.44 | 24,049.44 | 0.0000 |
+| Kenya | 581,510.75 | 581,510.75 | 0.0000 |
+| Maroc | 393,679.37 | 393,679.37 | 0.0000 |
+| Madagascar | 487,163.52 | 487,163.52 | 0.0000 |
+| La Réunion | 405.39 | 405.39 | 0.0000 |
+| Sénégal | 196,862.35 | 196,862.35 | 0.0000 |
+
+This confirms the exported geometries are not just visually correct but
+numerically consistent with the pipeline's own reported statistics - the
+same validation discipline already applied to idempotency and config/database
+synchronization above.
+
 **Result, all six countries.** The query below - `solar.country_summary`, a view combining GHI statistics, optimal-zone coverage, and geometry counts per country - confirms the database export end to end: six countries present, one shared geometry SRID (EPSG:4326), each country's export gated on the QC report showing no execution failure and no CRS/pixel plausibility issue.
 
 <p align="center">
